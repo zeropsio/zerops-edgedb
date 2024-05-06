@@ -7,6 +7,7 @@ project:
 services:
   - hostname: edgedb
     type: ubuntu@22.04
+    buildFromGit: https://github.com/zeropsio/zerops-edgedb
     envSecrets:
       EDGEDB_SERVER_BACKEND_DSN: ${db_connectionString}/db
       EDGEDB_SERVER_BINARY_ENDPOINT_SECURITY: optional
