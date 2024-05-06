@@ -1,21 +1,27 @@
 zerops:
   - setup: edgedb
     build:
-      buildCommands: 
+      buildCommands:
         - echo "noop"
       deploy:
         - ./
     run:
       prepareCommands:
-        - | 
+        - |
           sudo mkdir -p /usr/local/share/keyrings && \
           sudo curl --proto '=https' --tlsv1.2 -sSf \
           -o /usr/local/share/keyrings/edgedb-keyring.gpg \
           https://packages.edgedb.com/keys/edgedb-keyring.gpg
-        -| 
+        - |
           echo deb [signed-by=/usr/local/share/keyrings/edgedb-keyring.gpg] \
           https://packages.edgedb.com/apt \
           $(grep "VERSION_CODENAME=" /etc/os-release | cut -d= -f2) main \
           | sudo tee /etc/apt/sources.list.d/edgedb.list
-        - sudo apt-get update && sudo apt-get install edgedb-5
-      start: edgedb-server-5
+        - sudo apt-get update && sudo apt-get install -y edgedb-5
+        - |
+          sudo useradd -m -s /bin/bash edgedb_user || true
+          sudo mkdir -p /home/edgedb_user/edgedb_runstate
+          sudo chown edgedb_user:edgedb_user /home/edgedb_user/edgedb_runstate
+      start: sudo -u edgedb_user -H -E sh -c 'edgedb-server-5'
+
+
