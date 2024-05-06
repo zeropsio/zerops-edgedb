@@ -21,7 +21,5 @@ zerops:
         - |
           sudo useradd -m -s /bin/bash edgedb_user || true
           sudo mkdir -p /home/edgedb_user/edgedb_runstate
-          sudo chown edgedb_user:edgedb_user /home/edgedb_user/edgedb_runstate
-      start: sudo -u edgedb_user -H -E sh -c 'edgedb-server-5'
-
-
+          sudo chown edgedb:edgedb $EDGEDB_SERVER_RUNSTATE_DIR
+      start: sudo -u edgedb -H -E sh -c 'edgedb-server-5'
