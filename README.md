@@ -13,7 +13,7 @@ services:
     envSecrets:
       EDGEDB_SERVER_BACKEND_DSN: ${db_connectionString}/db
       EDGEDB_SERVER_BINARY_ENDPOINT_SECURITY: optional
-      EDGEDB_SERVER_RUNSTATE_DIR: /home/edgedb_user/edgedb_runstate
+      EDGEDB_SERVER_RUNSTATE_DIR: /home/edgedb/edgedb_runstate
       EDGEDB_SERVER_ADMIN_UI: enabled
       EDGEDB_SERVER_PASSWORD: <@generateRandomString(<12>)>
       EDGEDB_SERVER_TLS_CERT_FILE: /etc/zerops-zembed/cert.crt
