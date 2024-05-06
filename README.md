@@ -16,6 +16,9 @@ services:
       EDGEDB_SERVER_PASSWORD=foobar
       EDGEDB_SERVER_TLS_CERT_FILE=/etc/zerops-zembed/cert.crt
       EDGEDB_SERVER_TLS_KEY_FILE=/etc/zerops-zembed/cert.key
+      EDGEDB_SERVER_BIND_ADDRESS=0.0.0.0
+      EDGEDB_CLIENT_TLS_SECURITY=insecure
+      EDGEDB_SERVER_HTTP_ENDPOINT_SECURITY=optional
     ports:
       - port: 5656
   - hostname: db
