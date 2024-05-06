@@ -2,7 +2,7 @@
 
 ```yaml
 project:
-  name: edgedb-test
+  name: edgedb-zerops
   
 services:
   - hostname: edgedb
