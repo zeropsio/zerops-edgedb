@@ -9,6 +9,7 @@ services:
   - hostname: edgedb
     type: ubuntu@22.04
     buildFromGit: https://github.com/zeropsio/zerops-edgedb
+    enableSubdomainAccess: true
     envSecrets:
       EDGEDB_SERVER_BACKEND_DSN: ${db_connectionString}/db
       EDGEDB_SERVER_BINARY_ENDPOINT_SECURITY: optional
@@ -24,6 +25,7 @@ services:
       EDGEDB_SERVER_BOOTSTRAP_COMMAND: "ALTER ROLE edgedb { SET password := '${EDGEDB_SERVER_PASSWORD}'; }"
     ports:
       - port: 5656
+        httpSupport: true
 
   - hostname: db
     type: postgresql@16
