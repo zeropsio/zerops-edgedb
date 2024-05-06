@@ -21,7 +21,9 @@ services:
       EDGEDB_SERVER_HTTP_ENDPOINT_SECURITY=optional
     ports:
       - port: 5656
+
   - hostname: db
     type: postgresql@16
     mode: HA
+    priority: 10
 ```
