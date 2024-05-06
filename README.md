@@ -29,7 +29,6 @@ services:
       EDGEDB_SERVER_INSTANCE_NAME: ${hostname}
       EDGEDB_SERVER_BOOTSTRAP_COMMAND: "ALTER ROLE edgedb { SET password := '${EDGEDB_SERVER_PASSWORD}'; }"
 
-
   - hostname: db
     type: postgresql@16
     mode: HA
