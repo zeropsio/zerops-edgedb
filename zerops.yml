@@ -19,7 +19,7 @@ zerops:
           | sudo tee /etc/apt/sources.list.d/edgedb.list
         - sudo apt-get update && sudo apt-get install -y edgedb-5
         - |
-          sudo useradd -m -s /bin/bash edgedb_user || true
-          sudo mkdir -p /home/edgedb_user/edgedb_runstate
+          sudo useradd -m -s /bin/bash edgedb || true
+          sudo mkdir -p $EDGEDB_SERVER_RUNSTATE_DIR
           sudo chown edgedb:edgedb $EDGEDB_SERVER_RUNSTATE_DIR
       start: sudo -u edgedb -H -E sh -c 'edgedb-server-5'
